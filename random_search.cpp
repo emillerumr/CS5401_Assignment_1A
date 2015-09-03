@@ -14,8 +14,7 @@ using namespace std;
 
 
 
-void assign_variables(vector<vector<int> > clauses, 
-										vector<bool> variable_assignments)
+void assign_variables(vector<vector<int> > clauses, vector<bool> variable_assignments)
 {
 	long fitness = 0;
 	vector<vector<bool> > boolean_clauses(clauses.size());

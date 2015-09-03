@@ -38,8 +38,7 @@ void print_variable_assignments(vector<bool> variable_assignments)
 	cout<<endl<<endl;
 }
 
-void getConfigurationVariables(string &cnf_filename, string &rand_parameter, long &evaluations,
-								long &runs, string &log_filename, string &solution_filename)
+void getConfigurationVariables(string &cnf_filename, string &rand_parameter, long &evaluations, long &runs, string &log_filename, string &solution_filename)
 {
 	ifstream fin;
 	string configuration_filename = "default.cfg";
