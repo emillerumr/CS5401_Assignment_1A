@@ -79,4 +79,48 @@ void getConfigurationVariables(string &cnf_filename, string &rand_parameter, lon
 	fin>>solution_filename;
 }
 
+vector<vector<int> > GetCNFInfo(string cnf_filename, long &num_variables)
+{
+	ifstream cnf_stream;
+	cnf_stream.open(cnf_filename.c_str());
+
+	char start_character;
+	string comments;
+	string entry;
+	string cnf_filler;
+	long num_clauses;
+	bool in_comments = true;
+
+	
+	cnf_stream>>start_character;
+	while(start_character == 'c')
+	{
+		getline(cnf_stream,entry);
+		comments = comments + entry;
+		cnf_stream>>start_character;
+	}
+	cnf_stream>>cnf_filler;
+
+
+	cnf_stream>>num_variables;
+	cnf_stream>>num_clauses;
+
+	string end_line;
+	long current_var;
+	vector< vector<int> > clauses(num_clauses);
+
+	cnf_stream>>current_var;
+	for(int k = 0; k < num_clauses; k++)
+	{
+		while(current_var != 0)
+		{
+			clauses[k].push_back(current_var);
+			cnf_stream>>current_var;
+		}
+		cnf_stream>>current_var;		
+	}
+	print_cnf_clauses(clauses);
+	return clauses;
+}
+
 #endif
