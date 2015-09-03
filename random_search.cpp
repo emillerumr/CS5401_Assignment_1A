@@ -33,8 +33,10 @@ void assign_variables(vector<vector<int> > clauses, vector<bool> variable_assign
 			fitness++;
 		}
 	}
-	print_boolean_clauses(boolean_clauses);
-	cout<<"Fitness: "<<fitness<<endl;
+	if(fitness == clauses.size())
+	{
+		cout<<"Fitness: "<<fitness<<endl;
+	}
 }
 
 int main()
@@ -48,18 +50,20 @@ int main()
 
 	getConfigurationVariables(cnf_filename,rand_parameter,evaluations,runs,log_filename,solution_filename);
 
-
 	long num_variables;
 	vector< vector<int> > clauses = GetCNFInfo(cnf_filename, num_variables);
 
-	vector< bool > variable_assignments(num_variables + 1);
-	for(int k = 1; k <= num_variables; k++)
+	for(int i = 0; i < runs; i++)
 	{
-		variable_assignments[k] = rand() % 2;
+		for(long k = 0; k < evaluations; k++)
+		{
+			vector< bool > variable_assignments(num_variables + 1);
+			for(int k = 1; k <= num_variables; k++)
+			{
+				variable_assignments[k] = rand() % 2;
+			}
+			assign_variables(clauses, variable_assignments);
+		}
 	}
-
-	print_variable_assignments(variable_assignments);
-
-	assign_variables(clauses, variable_assignments);
 	return 0;
 }

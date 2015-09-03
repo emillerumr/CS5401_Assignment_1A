@@ -119,7 +119,6 @@ vector<vector<int> > GetCNFInfo(string cnf_filename, long &num_variables)
 		}
 		cnf_stream>>current_var;		
 	}
-	print_cnf_clauses(clauses);
 	return clauses;
 }
 
