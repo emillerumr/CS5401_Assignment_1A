@@ -40,51 +40,6 @@ void assign_variables(vector<vector<int> > clauses,
 
 int main()
 {
-	// ifstream fin;
-	// string configuration_filename = "default.cfg";
-	// fin.open(configuration_filename.c_str());
-	// if(!fin.good())
-	// {
-	// 	bool valid_file = false;
-	// 	cout<<"No default.cfg file! "
-	// 		<<"Please enter the name of the desired configuration file: " <<endl;
-	// 	while(!valid_file)
-	// 	{
-	// 		cin>>configuration_filename;
-	// 		fin.open(configuration_filename.c_str());
-	// 		if(fin.good())
-	// 		{
-	// 			valid_file = true;
-	// 		}
-	// 		else
-	// 		{
-	// 			cout<<"Error! Enter a valid file name:" <<endl;
-	// 		}
-	// 	}
-	// }	
-
-	// string cnf_filename;
-	// fin>>cnf_filename;
-
-	// string rand_parameter;
-	// fin>>rand_parameter;
-	// if(rand_parameter == "random")
-	// {
-	// 	srand(time(0));
-	// }
-	// else
-	// {
-	// 	srand(strtol(rand_parameter.c_str(),NULL,10));
-	// }
-
-	// long evaluations;
-	// fin>>evaluations;
-
-	// string log_filename;
-	// fin>>log_filename;
-
-	// string solution_filename;
-	// fin>>solution_filename;
 	string cnf_filename;
 	string rand_parameter; 
 	long evaluations;
