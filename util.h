@@ -38,31 +38,8 @@ void print_variable_assignments(vector<bool> variable_assignments)
 	cout<<endl<<endl;
 }
 
-void getConfigurationVariables(string &cnf_filename, string &rand_parameter, long &evaluations, long &runs, string &log_filename, string &solution_filename)
+void getConfigurationVariables(ifstream& fin, string &cnf_filename, string &rand_parameter, long &evaluations, long &runs, string &log_filename, string &solution_filename)
 {
-	ifstream fin;
-	string configuration_filename = "default.cfg";
-	fin.open(configuration_filename.c_str());
-	if(!fin.good())
-	{
-		bool valid_file = false;
-		cout<<"No default.cfg file! "
-			<<"Please enter the name of the desired configuration file: " <<endl;
-		while(!valid_file)
-		{
-			cin>>configuration_filename;
-			fin.open(configuration_filename.c_str());
-			if(fin.good())
-			{
-				valid_file = true;
-			}
-			else
-			{
-				cout<<"Error! Enter a valid file name:" <<endl;
-			}
-		}
-	}	
-
 	fin>>cnf_filename;
 	fin>>rand_parameter;
 	if(rand_parameter == "random")
@@ -91,7 +68,6 @@ vector<vector<int> > GetCNFInfo(string cnf_filename, long &num_variables)
 	long num_clauses;
 	bool in_comments = true;
 
-	
 	cnf_stream>>start_character;
 	while(start_character == 'c')
 	{
@@ -100,8 +76,6 @@ vector<vector<int> > GetCNFInfo(string cnf_filename, long &num_variables)
 		cnf_stream>>start_character;
 	}
 	cnf_stream>>cnf_filler;
-
-
 	cnf_stream>>num_variables;
 	cnf_stream>>num_clauses;
 
